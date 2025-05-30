@@ -4,4 +4,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :password, length: { minimum: MINIMUM_PASSWORD_LENGTH }
+  validates :email, presence: true, uniqueness: true
+
+  normalizes :email, with: ->(email) { email.strip.downcase }
 end

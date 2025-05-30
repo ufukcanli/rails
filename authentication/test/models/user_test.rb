@@ -15,4 +15,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
     assert_includes user.errors.full_messages, "Password can't be blank"
   end
+
+  test "email uniqueness" do
+    user = users(:ufuk).dup
+    user.email = "   #{user.email.upcase}   "
+    user.password = "password"
+
+    assert_not user.valid?
+    assert_equal ["has already been taken"], user.errors[:email]
+  end
 end
