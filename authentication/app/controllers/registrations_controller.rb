@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      sign_in @user
       redirect_to dashboard_path, notice: "You have successfully registered!"
     else
       render :new, status: :unprocessable_entity
