@@ -1,8 +1,8 @@
 require "test_helper"
 
 class DashboardsControllerTest < ActionDispatch::IntegrationTest
-  test "#show is accesible by anyone" do
+  test "#show redirects unauthenticated users" do
     get dashboard_path
-    assert_response :success
+    assert_redirected_to new_session_path
   end
 end
