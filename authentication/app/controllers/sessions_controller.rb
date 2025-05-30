@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate_by(session_params)
-      # Add sign-in logic later
+      sign_in user
       redirect_to dashboard_path, notice: "Logged in with #{user.email}"
     else
       flash.now[:notice] = "Invalid email or password"
