@@ -13,6 +13,6 @@ module MyAuthentication
 
   def sign_in(user)
     # Warning: This is not the final implementation and is currently insecure
-    cookies.signed.permanent[:user_id] = user.id
+    cookies.signed.permanent[:user_id] = { value: user.id, httponly: true }
   end
 end
