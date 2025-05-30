@@ -2,12 +2,12 @@
 
 ufuk:
   email: ufuk@mail.com
-  password_digest: password
+  password_digest: <%= BCrypt::Password.create("password") %>
 
 one:
   email: one@mail.com
-  password_digest: password
+  password_digest: <%= BCrypt::Password.create("password") %>
 
 two:
   email: two@mail.com
-  password_digest: password
+  password_digest: <%= BCrypt::Password.create("password") %>
