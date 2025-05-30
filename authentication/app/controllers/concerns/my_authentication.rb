@@ -4,7 +4,7 @@ module MyAuthentication
   end
 
   def restore_authentication
-    User.find_by(id: cookies[:user_id])
+    Current.user = User.find_by(id: cookies[:user_id])
   end
 
   def request_authentication
