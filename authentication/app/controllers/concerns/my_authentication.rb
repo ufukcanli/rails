@@ -4,7 +4,9 @@ module MyAuthentication
   end
 
   def restore_authentication
-    Current.user = User.find_by(id: cookies.signed[:user_id])
+    if session = session_from_cookies
+      Current.user = session.user
+    end
   end
 
   def request_authentication
@@ -12,7 +14,11 @@ module MyAuthentication
   end
 
   def sign_in(user)
-    # Warning: This is not the final implementation and is currently insecure
-    cookies.signed.permanent[:user_id] = { value: user.id, httponly: true }
+    session = user.sessions.create!
+    cookies.signed.permanent[:session_id] = { value: session.id, httponly: true }
+  end
+
+  def session_from_cookies
+    Session.find_by(id: cookies.signed[:session_id])
   end
 end
