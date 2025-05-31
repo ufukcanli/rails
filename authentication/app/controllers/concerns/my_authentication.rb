@@ -21,4 +21,9 @@ module MyAuthentication
   def session_from_cookies
     Session.find_by(id: cookies.signed[:session_id])
   end
+
+  def sign_out
+    session_from_cookies.destroy!
+    cookies.delete(:session_id)
+  end
 end
