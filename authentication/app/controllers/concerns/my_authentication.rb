@@ -26,4 +26,10 @@ module MyAuthentication
     session_from_cookies.destroy!
     cookies.delete(:session_id)
   end
+
+  def redirect_if_signed_in
+    if restore_authentication
+      redirect_to root_path, notice: "You are already signed in."
+    end
+  end
 end
