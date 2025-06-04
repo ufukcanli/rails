@@ -18,14 +18,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_31_055559) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-# Could not dump table "sqlite_stat1" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
-
-# Could not dump table "sqlite_stat4" because of following StandardError
-#   Unknown type '' for column 'tbl'
-
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
