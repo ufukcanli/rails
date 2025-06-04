@@ -11,6 +11,6 @@ class User < ApplicationRecord
   normalizes :email, with: ->(email) { email.strip.downcase }
 
   generates_token_for :password_reset, expires_in: 1.hour do
-    password_salt.last(10)
+    password_salt&.last(10)
   end
 end
