@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
 
     @user.name = "John"
-    assert @assert.valid?
+    assert @user.valid?
   end
 
   test "requires a valid email" do
