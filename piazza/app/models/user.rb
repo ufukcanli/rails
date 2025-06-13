@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships
+  has_many :app_sessions
 
   has_secure_password
 
