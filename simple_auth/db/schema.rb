@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_17_154316) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_17_154611) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -32,8 +32,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_17_154316) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id", null: false
+    t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "users", "accounts"
 end
