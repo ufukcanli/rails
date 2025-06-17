@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates_associated :account
   validates :name, presence: true
-  validates :email_adress, presence: true, uniqueness: { case_sensitive: false }
+  validates :email_address, presence: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
