@@ -12,24 +12,28 @@
             Home
           </a>
         </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
-            Sign Up
-          </a>
-        </li>
-        <li>
-          <a href="" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
-            Log In
-          </a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
-            Users
-          </a>
-        </li>
-        <li>
-          <%= link_to "Logout", session_path, data: { turbo_method: "delete" }, class: "block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500" %>
-        </li>
+        <% unless authenticated? %>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
+              Sign Up
+            </a>
+          </li>
+          <li>
+            <a href="" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
+              Log In
+            </a>
+          </li>
+        <% end %>
+        <% if authenticated? %>
+          <li>
+            <a href="#" class="block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500">
+              Users
+            </a>
+          </li>
+          <li>
+            <%= link_to "Logout", session_path, data: { turbo_method: "delete" }, class: "block py-2 px-3 text-white rounded md:p-0 hover:text-white md:hover:text-blue-500" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
